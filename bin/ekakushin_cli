@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'ekakushin_cli'
+EkakushinCli::CLI.start
