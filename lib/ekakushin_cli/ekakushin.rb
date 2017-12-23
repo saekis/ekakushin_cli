@@ -1,24 +1,28 @@
 module EkakushinCli
   class Ekakushin
+    attr_accessor :is_debug_mode
     def initialize(browser)
       @browser = browser
       @browser.open(ENV['ATTENDANCE_URL'])
     end
 
     def clock_in
-      login
-      # Wait page redirect
-      sleep(1)
-      p @browser.find(:name, 'syukkin').attribute('alt')
-      # submit_attendance('syukkin')
+      register_attendance('syukkin')
     end
 
     def clock_out
+      register_attendance('taikin')
+    end
+
+    def register_attendance(button_name)
       login
-      # Wait page redirect
+      # wait page redirect
       sleep(1)
-      p @browser.find(:name, 'taikin').attribute('alt')
-      # submit_attendance('taikin')
+
+      # click attendance button
+      unless @is_debug_mode
+        @browser.click(:name, button_name)
+      end
     end
 
     def login
@@ -26,10 +30,6 @@ module EkakushinCli
       @browser.input(:name, 'userCodeAlias', ENV['USER_CODE'])
       @browser.input(:name, 'password', ENV['PASSWORD'])
       @browser.click(:css, "input[type='submit']")
-    end
-
-    def submit_attendance(button_name)
-      @browser.click(:name, button_name)
     end
   end
 end

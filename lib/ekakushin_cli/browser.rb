@@ -1,7 +1,5 @@
 module EkakushinCli
   class Browser
-    attr_reader :driver, :wait
-
     def initialize(browser_name)
       @driver = define_browser(browser_name)
       @wait = set_wait
@@ -11,7 +9,7 @@ module EkakushinCli
       Selenium::WebDriver.for(browser_name)
     end
 
-    def set_wait()
+    def set_wait
       Selenium::WebDriver::Wait.new(timeout: 5)
     end
 

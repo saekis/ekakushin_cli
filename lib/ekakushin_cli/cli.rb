@@ -4,21 +4,21 @@ module EkakushinCli
 
     method_option 'in'
     method_option 'out'
-    desc "main", "main process"
+    method_option 'debug'
+    desc 'main', 'main process'
     def main
       Dotenv.load
 
-      browser = Browser.new(:chrome)
-      ekakushin = Ekakushin.new(browser)
+      ekakushin = Ekakushin.new(Browser.new(:chrome))
 
-      if options['out']
-        ekakushin.clock_out
-      else
-        ekakushin.clock_in
+      if ekakushin.is_debug_mode = options['debug']
+        puts '[******Debug mode******]'
       end
 
+      options['out'] ? ekakushin.clock_out : ekakushin.clock_in
+
       # Confirmation time
-      sleep(2)
+      sleep(1)
     end
   end
 end
