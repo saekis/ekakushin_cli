@@ -20,9 +20,7 @@ module EkakushinCli
       sleep(1)
 
       # click attendance button
-      unless @is_debug_mode
-        @browser.click(:name, button_name)
-      end
+      @browser.click(:name, button_name) unless @is_debug_mode
     end
 
     def login
