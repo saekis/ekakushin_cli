@@ -1,5 +1,5 @@
 ## Description
-`attendance` is CLI tool for automatically submitting daily attendance using selenium.
+`ekakushin_cli` is CLI tool for automatically submitting daily attendance using selenium.
 
 ## Installation
 ```sh
@@ -7,13 +7,12 @@
 $ brew install chromedriver
 
 # set project
-$ git clone https://github.com/saekis/attendance.git
+$ git clone https://github.com/saekis/ekakushin_cli.git
 $ cd attendance
 $ bundle install
 
 # set env file
 $ cat << EOF> .env
-ATTENDANCE_URL="xxxxxxx"
 CUSTOMER_CODE="xxxxxxx"
 USER_CODE="xxxxxxx"
 PASSWORD="xxxxxxx"
@@ -28,11 +27,11 @@ EOF
 ### clock in
 ```
 $ cd <your project path>
-$ bundle exec ruby main.rb --in
+$ bundle exec bin/ekakushin_cli --in
 ```
 
 ### clock out
 ```
 $ cd <your project path>
-$ bundle exec ruby main.rb --out
+$ bundle exec bin/ekakushin_cli --out
 ```
