@@ -20,8 +20,8 @@ EOF
 ```
 
 ## Requirement
-- Ruby
-- chromedriver
+- Ruby 2.4.0+
+- ChromeDriver 2.0+
 
 ## Usage
 ### clock in
